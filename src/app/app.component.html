@@ -5,7 +5,7 @@
         <form>
               <input type="text" (keyup)="setUsername($event)" placeholder="Username" />
               <input type="password" (keyup)="setPassword($event)" placeholder="Password" />
-              <input type="button" (click)="getFriends()" value="Login"/>
+              <input type="button" (click)="getAuthentication(username,password)" value="Login"/>
         </form>
       </div>
     </div>
