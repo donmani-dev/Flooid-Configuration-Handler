@@ -1,12 +1,3 @@
-<div class="flip-container">
-    <div class="flipper" id="flipper">
-      <div class="front">
-        <h1 class="title">Admin Login</h1>
-        <form>
-              <input type="text" (keyup)="setUsername($event)" placeholder="Username" />
-              <input type="password" (keyup)="setPassword($event)" placeholder="Password" />
-              <input type="button" (click)="getAuthentication(username,password)" value="Login"/>
-        </form>
-      </div>
-    </div>
-    </div>
+<div>
+    <router-outlet></router-outlet>
+</div>
