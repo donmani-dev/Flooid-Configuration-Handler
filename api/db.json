@@ -1,0 +1,16 @@
+{
+    "properties": [
+        {
+            "id": 1,
+            "name": "default_enable",
+            "value": "true",
+            "type": "Boolean"
+        },
+        {
+            "id": 2,
+            "name": "default_width",
+            "value": 3,
+            "type": "Integer"
+        }
+    ]
+}

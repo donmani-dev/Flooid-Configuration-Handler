@@ -3,10 +3,11 @@
     <div class="front">
       <h1 class="title">Admin Login</h1>
       <form>
-            <input type="text" (keyup)="setUsername($event)" placeholder="Username" />
-            <input type="password" (keyup)="setPassword($event)" placeholder="Password" />
-            <input type="button" (click)="getAuthentication(username,password)" value="Login"/>
-      </form>
+        <input type="text" [(ngModel)]="username" [ngModelOptions]="{ standalone: true }" placeholder="Username" />
+        <input type="password" [(ngModel)]="password" [ngModelOptions]="{ standalone: true }" placeholder="Password" />
+        <input type="button" (click)="getAuthentication(username,password)" value="Login"/>
+      </form> 
+      <p *ngIf="error">{{error}}</p>
     </div>
   </div>
   </div>

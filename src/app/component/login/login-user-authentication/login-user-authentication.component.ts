@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { LoginApiCallService } from 'src/app/providers/login/login-api-call.service';
+import { PropertiesService } from 'src/app/providers/properties/properties.service';
 
 @Component({
   selector: 'app-login-user-authentication',
@@ -9,22 +11,27 @@ import { LoginApiCallService } from 'src/app/providers/login/login-api-call.serv
 export class LoginUserAuthenticationComponent {
   protected username: string = "";
   protected password: string = "";
+  protected error: string = "";
   constructor(private loginApiCallService: LoginApiCallService) { }
 
-  setUsername(event: any) {
-    this.username = event.target.value;
-  }
-
-  setPassword(event: any) {
-    this.password = event.target.value;
-  }
-
-  getAuthentication(username: any, password: any) {
-    this.loginApiCallService.getAuthentication(username, password)
-  .then((response: any) => {
-    console.log(response); // Handle the response
-  })
-  .catch((error: any) => {// Handle the error
-  });
+   getAuthentication(username: any, password: any) {
+    if (!username || !password) {
+      this.error = "Please enter a username and password.";
+      return;
+    }
+  
+      this.loginApiCallService.getAuthentication(username, password).subscribe(
+      (result: boolean) => {
+        if (result === true) {
+          this.loginApiCallService.routeToConfigPage()
+        } else {
+          console.log("sdfs")
+          this.error = "Please enter correct username and password";
+        }
+      },
+      (error: any) => {
+        this.error = "Please enter correct username and password";
+      }
+    );
   }
 }

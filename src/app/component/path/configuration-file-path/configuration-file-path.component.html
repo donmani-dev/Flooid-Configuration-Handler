@@ -1,1 +1,7 @@
-<input type="text" (keyup)="setFilePath($event)" placeholder="File Path" />
+<input type="text" [(ngModel)]="filePath" [ngModelOptions]="{ standalone: true }" placeholder="File Path" />
+<input type="button" (click)="showAllProperties()" value="Show All Properties"/>
+<form *ngFor = "let config of result; let i = index">
+    <p>{{config.name}}</p>
+    <input *ngIf="config.type == 'Integer' || config.type == 'text'" type="text" placeholder="Username" [value]="config.value" />
+    <mat-slide-toggle *ngIf="config.type == 'Boolean'" >Toggle me!</mat-slide-toggle>
+  </form> 
